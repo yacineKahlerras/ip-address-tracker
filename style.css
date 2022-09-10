@@ -14,23 +14,115 @@
 body {
   font-size: 1.8rem;
   min-height: 100vh;
+  display: grid;
+  grid-template-rows: 30rem 52.8rem;
+  align-items: center;
+}
+h1 {
+  margin-bottom: 2.5rem;
+  color: white;
+  font-weight: 500;
+}
+h2 {
+  font-size: 1.8rem;
+  letter-spacing: 0.1rem;
+}
+h3 {
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  color: var(--Dark-Gray);
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  font-weight: 00;
+}
+/* 
+==========================
+==========================
+            main
+==========================
+==========================
+*/
+main {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  place-items: center;
+  position: relative;
 }
 #map {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
 }
-input[type="text"] {
-  width: 200px;
-  height: 20px;
+/* 
+==========================
+==========================
+            nav
+==========================
+==========================
+*/
+nav {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: url("./images/pattern-bg.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  position: relative;
+  text-align: center;
+}
+.nav-center {
+  width: min(80%, 55.5rem);
+  position: absolute;
+  top: 2.7rem;
+}
+input[type="text"],
+input[type="text"]:focus {
+  width: 100%;
+  height: min(100%, 5.8rem);
   padding-right: 50px;
+  font-size: 1.8rem;
+  padding: 1.8rem 2.3rem;
+  border-radius: 0.7em;
+  border: none;
+  outline: none;
 }
 
 input[type="submit"] {
-  margin-left: -50px;
-  height: 25px;
-  width: 50px;
-  background: blue;
+  width: 5.8rem;
+  height: min(100%, 5.8rem);
+  background: var(--Very-Dark-Gray);
   color: white;
   border: 0;
   -webkit-appearance: none;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  border-radius: 0em 0.7em 0.7em 0em;
+  background-image: url("./images/icon-arrow.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+/* info section */
+ul {
+  width: min(80%, 111rem);
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 50%);
+
+  background: white;
+  list-style: none;
+  text-align: center;
+  border-radius: 1em;
+  padding: 2.5rem;
+  box-shadow: 0 0 5rem rgba(0, 0, 0, 0.267);
+
+  display: grid;
+  align-items: center;
+  gap: 2rem;
+  z-index: 999;
 }
