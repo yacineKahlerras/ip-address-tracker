@@ -5,7 +5,7 @@
  * =====================
  * =====================
  * */
-const inputField = document.querySelector("input[type=text]");
+const inputField = document.querySelector(".ip-field");
 const submitButton = document.querySelector(".submit-btn");
 const randomButton = document.querySelector(".random-btn");
 
@@ -14,6 +14,10 @@ inputField.addEventListener("keypress", (e) => {
     init(inputField.value);
   }
 });
+inputField.addEventListener("input", () => {
+  removeInputError();
+});
+
 submitButton.addEventListener("click", (e) => {
   init(inputField.value);
 });
@@ -21,6 +25,7 @@ submitButton.addEventListener("click", (e) => {
 randomButton.addEventListener("click", () => {
   const randomIp = `${getRandomNumbah()}.${getRandomNumbah()}.${getRandomNumbah()}.${getRandomNumbah()}`;
   init(randomIp);
+  removeInputError();
 });
 
 /** gets a random number from range */
@@ -36,7 +41,7 @@ function getRandomNumbah() {
  * =====================
  * */
 const apiUrl =
-  "https://geo.ipify.org/api/v2/country,city?apiKey=at_d7WLCbpcwqu5L6ntRswFt4lx0HjMS&ipAddress=";
+  "https://geo.ipify.org/api/v2/country,city?apiKey=at_bGDoy4LONhpW05ix1qSSs6uK9iZex&ipAddress=";
 let mapInitiated = false,
   isFlying = false;
 let map, marker, myIcon;
@@ -55,9 +60,8 @@ const fetchData = async (ip) => {
   if (!ip) ip = "";
   let response = await fetch(`${apiUrl}${ip}`, {
     cache: "no-cache",
-  }).catch(() => {
-    console.log("error");
   });
+  if (!response.ok) throw Error(inputError());
   if (response) return response.json();
 
   submitButton.classList.remove("waiting-submit-btn");
@@ -73,8 +77,22 @@ const updateTextInfos = (data) => {
   infoTexts[3].textContent = data.isp;
 };
 
+/** throws an error */
+const inputError = () => {
+  submitButton.classList.remove("waiting-submit-btn");
+  inputField.classList.add("input-error");
+  inputField.value = "";
+  inputField.placeholder = "wrong format, try again";
+};
+
+/** removes input error effect */
+const removeInputError = () => {
+  inputField.classList.remove("input-error");
+  inputField.placeholder = "Search for any IP address or domain";
+};
+
 /** initializes everything */
-init("");
+// init("");
 
 /**
  * =====================

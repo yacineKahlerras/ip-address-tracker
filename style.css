@@ -118,8 +118,8 @@ nav {
   position: absolute;
   top: 2.7rem;
 }
-input[type="text"],
-input[type="text"]:focus {
+.ip-field,
+.ip-field:focus {
   width: 100%;
   height: min(100%, 5.8rem);
   padding-right: 50px;
@@ -128,6 +128,12 @@ input[type="text"]:focus {
   border-radius: 0.7em;
   border: none;
   outline: none;
+}
+.input-error {
+  outline: 0.2rem solid rgb(252, 98, 98);
+}
+.input-error::placeholder {
+  color: rgb(252, 98, 98);
 }
 @media (min-width: 75em) {
   .nav-center {
