@@ -126,3 +126,14 @@ ul {
   gap: 2rem;
   z-index: 999;
 }
+@media (min-width: 37.5em) {
+  ul {
+    grid-template-columns: repeat(2, auto);
+  }
+}
+@media (min-width: 75em) {
+  ul {
+    grid-template-columns: repeat(4, auto);
+    height: 16.1rem;
+  }
+}
