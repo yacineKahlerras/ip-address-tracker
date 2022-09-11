@@ -55,6 +55,11 @@ button {
     transform: rotate(90deg);
   }
 }
+@media (max-width: 28.12em) {
+  h1 {
+    text-align: left;
+  }
+}
 @media (min-width: 75em) {
   body {
     grid-template-rows: 28rem 52.8rem;

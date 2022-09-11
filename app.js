@@ -92,7 +92,7 @@ const removeInputError = () => {
 };
 
 /** initializes everything */
-init("");
+// init("");
 
 /**
  * =====================
