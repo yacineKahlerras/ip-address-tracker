@@ -36,8 +36,7 @@ h3 {
   letter-spacing: 0.1rem;
   font-weight: 00;
 }
-button,
-input {
+button {
   cursor: pointer;
 }
 @keyframes rotating {
@@ -150,7 +149,7 @@ search button
 .submit-btn {
   width: 5.8rem;
   height: min(100%, 5.8rem);
-  background: var(--Very-Dark-Gray);
+  background: black;
   color: white;
   border: 0;
   -webkit-appearance: none;
@@ -162,6 +161,9 @@ search button
   display: grid;
   place-content: center;
   z-index: 3;
+}
+.submit-btn:hover {
+  background: var(--Very-Dark-Gray);
 }
 .submit-btn::after {
   content: "";
