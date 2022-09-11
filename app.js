@@ -41,7 +41,7 @@ function getRandomNumbah() {
  * =====================
  * */
 const apiUrl =
-  "https://geo.ipify.org/api/v2/country,city?apiKey=at_bGDoy4LONhpW05ix1qSSs6uK9iZex&ipAddress=";
+  "https://geo.ipify.org/api/v2/country,city?apiKey=at_OsEBD0QnF77zYnhtySsiFwmyWHhoe&ipAddress=";
 let mapInitiated = false,
   isFlying = false;
 let map, marker, myIcon;
