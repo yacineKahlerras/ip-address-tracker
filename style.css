@@ -128,7 +128,8 @@ nav {
   border: none;
   outline: none;
 }
-.input-error {
+.input-error,
+.input-error:focus {
   outline: 0.2rem solid rgb(252, 98, 98);
 }
 .input-error::placeholder {
