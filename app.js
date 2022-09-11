@@ -1,6 +1,25 @@
 /**
  * =====================
  * =====================
+ *         input
+ * =====================
+ * =====================
+ * */
+const inputField = document.querySelector("input[type=text]");
+const submitButton = document.querySelector(".submit-btn");
+
+inputField.addEventListener("keypress", (e) => {
+  if (e.key === "Enter") {
+    init(inputField.value);
+  }
+});
+submitButton.addEventListener("click", (e) => {
+  init(inputField.value);
+});
+
+/**
+ * =====================
+ * =====================
  *        ip adress
  * =====================
  * =====================
@@ -10,11 +29,13 @@ const apiUrl =
 let mapInitiated = false,
   isFlying = false;
 let map, marker, myIcon;
+const infoTexts = [...document.getElementsByTagName("h2")];
 
 /** extracting data */
 const init = async (ip) => {
   const data = await fetchData(ip);
   getMap(data.location.lat, data.location.lng);
+  updateTextInfos(data);
 };
 
 /** fetch data */
@@ -27,6 +48,14 @@ const fetchData = async (ip) => {
   });
   if (response) return response.json();
   return response;
+};
+
+/** updates the infos texts */
+const updateTextInfos = (data) => {
+  infoTexts[0].textContent = data.ip;
+  infoTexts[1].textContent = `${data.location.region}, ${data.location.city} ${data.location.postalCode}`;
+  infoTexts[2].textContent = `UTC ${data.location.timezone}`;
+  infoTexts[3].textContent = data.isp;
 };
 
 /** initializes everything */
@@ -52,7 +81,7 @@ const getMap = (lat, lng) => {
     // when moving to another location
     map.addEventListener("moveend", () => {
       if (isFlying) {
-        console.log("nigga we here !!");
+        submitButton.classList.remove("waiting-submit-btn");
       }
     });
 
@@ -68,29 +97,11 @@ const getMap = (lat, lng) => {
   } else {
     // flies to a another location
     isFlying = true;
-    map.flyTo([lat, lng], 10, {
+    submitButton.classList.add("waiting-submit-btn");
+    map.flyTo([lat, lng], 13, {
       animate: true,
       duration: 2,
     });
     marker.setLatLng([lat, lng]);
   }
 };
-
-/**
- * =====================
- * =====================
- *         input
- * =====================
- * =====================
- * */
-const inputField = document.querySelector("input[type=text]");
-const submitButton = document.querySelector("input[type=submit]");
-
-inputField.addEventListener("keypress", (e) => {
-  if (e.key === "Enter") {
-    init(inputField.value);
-  }
-});
-submitButton.addEventListener("click", (e) => {
-  init(inputField.value);
-});

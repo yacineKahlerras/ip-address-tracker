@@ -35,6 +35,14 @@ h3 {
   letter-spacing: 0.1rem;
   font-weight: 00;
 }
+@keyframes rotating {
+  from {
+    transform: translate(-50%, -50%) rotate(0);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
 /* 
 ==========================
 ==========================
@@ -52,6 +60,7 @@ main {
 #map {
   width: 100%;
   height: 100%;
+  z-index: -1;
 }
 /* 
 ==========================
@@ -73,6 +82,7 @@ nav {
   background-size: cover;
   position: relative;
   text-align: center;
+  isolation: isolate;
 }
 .nav-center {
   width: min(80%, 55.5rem);
@@ -90,8 +100,8 @@ input[type="text"]:focus {
   border: none;
   outline: none;
 }
-
-input[type="submit"] {
+/* search button */
+.submit-btn {
   width: 5.8rem;
   height: min(100%, 5.8rem);
   background: var(--Very-Dark-Gray);
@@ -102,11 +112,78 @@ input[type="submit"] {
   right: 0;
   bottom: 0;
   border-radius: 0em 0.7em 0.7em 0em;
+  text-align: center;
+  display: grid;
+  place-content: center;
+}
+.submit-btn::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
   background-image: url("./images/icon-arrow.svg");
   background-repeat: no-repeat;
   background-position: center;
 }
-/* info section */
+.waiting-submit-btn::after {
+  width: 40%;
+  height: 40%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(0);
+
+  content: "";
+  background-image: none;
+  border: 0.2rem solid var(--Dark-Gray);
+  border-top: 0.2rem solid white;
+  border-radius: 50%;
+
+  animation: rotating 2s linear infinite;
+}
+/* 
+
+
+random ip button 
+
+
+*/
+.random-btn {
+  width: 5.8rem;
+  height: min(100%, 5.8rem);
+  background: rgb(11, 3, 49);
+  border: 0;
+  -webkit-appearance: none;
+  position: absolute;
+  right: 0;
+  top: 1rem;
+  border-radius: 0.7em 0.7em 0em 0em;
+  text-align: center;
+  display: grid;
+  place-content: center;
+  z-index: -1;
+}
+.random-btn::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: -0.3rem;
+  left: 0;
+  background-image: url("./images/dice.svg");
+  background-size: 2.5rem;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+/* 
+
+
+info section 
+
+
+*/
 ul {
   width: min(80%, 111rem);
   position: absolute;
