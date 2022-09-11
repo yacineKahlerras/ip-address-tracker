@@ -5,7 +5,7 @@
  * =====================
  * =====================
  * */
-const inputField = document.querySelector("input[type=text]");
+const inputField = document.querySelector("input[type=number]");
 const submitButton = document.querySelector(".submit-btn");
 const randomButton = document.querySelector(".random-btn");
 
