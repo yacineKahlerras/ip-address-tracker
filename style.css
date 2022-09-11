@@ -23,12 +23,12 @@ h1 {
   color: white;
   font-weight: 500;
 }
-h2 {
+h3 {
   font-size: 1.8rem;
   letter-spacing: 0.1rem;
   color: var(--Very-Dark-Gray);
 }
-h3 {
+h2 {
   font-size: 0.9rem;
   margin-bottom: 1rem;
   color: var(--Dark-Gray);
@@ -62,10 +62,10 @@ button {
   h1 {
     margin-bottom: 2.5rem;
   }
-  h2 {
+  h3 {
     font-size: 2.4rem;
   }
-  h3 {
+  h2 {
     font-size: 1.2rem;
   }
 }
