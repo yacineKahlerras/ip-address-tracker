@@ -7,6 +7,7 @@
  * */
 const inputField = document.querySelector("input[type=text]");
 const submitButton = document.querySelector(".submit-btn");
+const randomButton = document.querySelector(".random-btn");
 
 inputField.addEventListener("keypress", (e) => {
   if (e.key === "Enter") {
@@ -16,6 +17,16 @@ inputField.addEventListener("keypress", (e) => {
 submitButton.addEventListener("click", (e) => {
   init(inputField.value);
 });
+
+randomButton.addEventListener("click", () => {
+  const randomIp = `${getRandomNumbah()}.${getRandomNumbah()}.${getRandomNumbah()}.${getRandomNumbah()}`;
+  init(randomIp);
+});
+
+/** gets a random number from range */
+function getRandomNumbah() {
+  return Math.floor(Math.random() * (100 - 200) + 100);
+}
 
 /**
  * =====================
@@ -72,7 +83,7 @@ const getMap = (lat, lng) => {
   if (!mapInitiated) {
     // creates the map
     mapInitiated = true;
-    map = L.map("map").setView([lat, lng], 13);
+    map = L.map("map", { zoomControl: false }).setView([lat, lng], 13);
     layer = L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
       maxZoom: 19,
       attribution: "© OpenStreetMap",

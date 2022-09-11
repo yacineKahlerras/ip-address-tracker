@@ -19,13 +19,14 @@ body {
   align-items: center;
 }
 h1 {
-  margin-bottom: 2.5rem;
+  margin-bottom: 2.9rem;
   color: white;
   font-weight: 500;
 }
 h2 {
   font-size: 1.8rem;
   letter-spacing: 0.1rem;
+  color: var(--Very-Dark-Gray);
 }
 h3 {
   font-size: 0.9rem;
@@ -35,12 +36,38 @@ h3 {
   letter-spacing: 0.1rem;
   font-weight: 00;
 }
+button,
+input {
+  cursor: pointer;
+}
 @keyframes rotating {
   from {
     transform: translate(-50%, -50%) rotate(0);
   }
   to {
     transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+@keyframes normarlRotation {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(90deg);
+  }
+}
+@media (min-width: 75em) {
+  body {
+    grid-template-rows: 28rem 52.8rem;
+  }
+  h1 {
+    margin-bottom: 2.5rem;
+  }
+  h2 {
+    font-size: 2.4rem;
+  }
+  h3 {
+    font-size: 1.2rem;
   }
 }
 /* 
@@ -60,7 +87,6 @@ main {
 #map {
   width: 100%;
   height: 100%;
-  z-index: -1;
 }
 /* 
 ==========================
@@ -76,13 +102,16 @@ nav {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
   background: url("./images/pattern-bg.png");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
+
   position: relative;
   text-align: center;
   isolation: isolate;
+  z-index: 999;
 }
 .nav-center {
   width: min(80%, 55.5rem);
@@ -100,7 +129,18 @@ input[type="text"]:focus {
   border: none;
   outline: none;
 }
-/* search button */
+@media (min-width: 75em) {
+  .nav-center {
+    top: 3rem;
+  }
+}
+/* 
+
+
+search button 
+
+
+*/
 .submit-btn {
   width: 5.8rem;
   height: min(100%, 5.8rem);
@@ -115,6 +155,7 @@ input[type="text"]:focus {
   text-align: center;
   display: grid;
   place-content: center;
+  z-index: 3;
 }
 .submit-btn::after {
   content: "";
@@ -153,7 +194,7 @@ random ip button
 .random-btn {
   width: 5.8rem;
   height: min(100%, 5.8rem);
-  background: rgb(11, 3, 49);
+  background: #453f99;
   border: 0;
   -webkit-appearance: none;
   position: absolute;
@@ -163,7 +204,7 @@ random ip button
   text-align: center;
   display: grid;
   place-content: center;
-  z-index: -1;
+  z-index: 0;
 }
 .random-btn::after {
   content: "";
@@ -176,6 +217,18 @@ random ip button
   background-size: 2.5rem;
   background-repeat: no-repeat;
   background-position: center;
+}
+.random-btn:hover {
+  background: #4f49a8;
+}
+.random-btn:active {
+  background: #4a43a3;
+}
+.random-btn:hover:focus:after {
+  animation: normarlRotation 0.5s linear;
+}
+.random-btn:not(:hover):after {
+  animation: none;
 }
 /* 
 
@@ -212,5 +265,8 @@ ul {
   ul {
     grid-template-columns: repeat(4, auto);
     height: 16.1rem;
+    text-align: left;
+    align-items: baseline;
+    padding-top: 3.6rem;
   }
 }
