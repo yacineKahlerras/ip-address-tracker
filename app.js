@@ -5,7 +5,7 @@
  * =====================
  * =====================
  * */
-const inputField = document.querySelector("input[type=number]");
+const inputField = document.querySelector("input[type=text]");
 const submitButton = document.querySelector(".submit-btn");
 const randomButton = document.querySelector(".random-btn");
 
@@ -44,6 +44,7 @@ const infoTexts = [...document.getElementsByTagName("h2")];
 
 /** extracting data */
 const init = async (ip) => {
+  submitButton.classList.add("waiting-submit-btn");
   const data = await fetchData(ip);
   getMap(data.location.lat, data.location.lng);
   updateTextInfos(data);
@@ -58,11 +59,14 @@ const fetchData = async (ip) => {
     console.log("error");
   });
   if (response) return response.json();
+
+  submitButton.classList.remove("waiting-submit-btn");
   return response;
 };
 
 /** updates the infos texts */
 const updateTextInfos = (data) => {
+  inputField.value = data.ip;
   infoTexts[0].textContent = data.ip;
   infoTexts[1].textContent = `${data.location.region}, ${data.location.city} ${data.location.postalCode}`;
   infoTexts[2].textContent = `UTC ${data.location.timezone}`;
@@ -105,10 +109,11 @@ const getMap = (lat, lng) => {
 
     // marker
     marker = L.marker([lat, lng], { icon: myIcon }).addTo(map);
+
+    submitButton.classList.remove("waiting-submit-btn");
   } else {
     // flies to a another location
     isFlying = true;
-    submitButton.classList.add("waiting-submit-btn");
     map.flyTo([lat, lng], 13, {
       animate: true,
       duration: 2,
