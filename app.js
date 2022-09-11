@@ -45,7 +45,7 @@ const apiUrl =
 let mapInitiated = false,
   isFlying = false;
 let map, marker, myIcon;
-const infoTexts = [...document.getElementsByTagName("h2")];
+const infoTexts = [...document.getElementsByTagName("h3")];
 
 /** extracting data */
 const init = async (ip) => {
