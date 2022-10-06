@@ -19,6 +19,8 @@ This one was a fun one to make it uses two different api's, the first one [IP Ge
 - Semantic HTML5 markup
 - CSS custom properties
 - Vanilla Javascript
+- [IP Geolocation API by IPify](https://geo.ipify.org/)
+- [LeafletJS](https://leafletjs.com/)
 - Flexbox
 - CSS Grid
 - Mobile-first workflow
